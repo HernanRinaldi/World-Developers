@@ -3,7 +3,7 @@
 import React from 'react';
 
 //----------------CSS-------------------//
-import  '../Card/CardStyle.css'
+import  './CardStyle.css'
 
 //-----------FUCNTION CARD-----------------//
 export default function Card( ){

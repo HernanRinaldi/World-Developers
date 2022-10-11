@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllHotels } from '../../Redux/hotel/hotelAction';
+import { getHotels } from '../../Redux/hotel/hotelAction';
+import  CardHotel  from '../CardHotel/CardHotel';
 
-export const Hotels = () => {
+const CardHotels = () => {
     const dispatch = useDispatch();
     const { hotels } = useSelector(state=>state.hotels)
 
     useEffect(()=>{
-        dispatch(getAllHotels())
+        dispatch(getHotels())
     },[])
     
     return (
@@ -15,13 +16,12 @@ export const Hotels = () => {
             {
                 hotels && hotels.map((e,i)=>{
                     return (
-                        <div key={i}>
-                            <p>{e.name}</p>
-                            <img src={e.image} alt={e.name} />
-                        </div>
+                        <CardHotel key={i} name={e.name} image={e.image}/>
                     )
                 })
             }
         </div>
     )
 }
+
+export default CardHotels;

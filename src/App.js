@@ -1,12 +1,15 @@
 //import logo from './logo.svg';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import Home from './Components/Home/Home.jsx'
 
 function App() {
   return (
     <div className="">
-      <header className="">
-        <h1> World Developers </h1>
-      </header>
+      <Switch>
+        {/* <Route path='/' component={LandingPage} ></Route> */}
+        <Route path='/home' component={Home}/>
+      </Switch>
     </div>
   );
 }
