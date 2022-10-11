@@ -7,14 +7,14 @@ export const hotelsSlice = createSlice({
         detail:{}
     },
     reducers:{
-        getAllHotels: (state,action)=>{
+        actionGetAllHotels: (state,action)=>{
             state.hotels = action.payload
         },
-        getHotelById: (state,action)=>{
+        actionGetHotelById: (state,action)=>{
             state.detail = action.payload
         }
     }
 })
 
-export const {getAllHotels, getHotelById} = hotelsSlice.actions
+export const {actionGetAllHotels, actionGetHotelById} = hotelsSlice.actions
 export default hotelsSlice.reducer

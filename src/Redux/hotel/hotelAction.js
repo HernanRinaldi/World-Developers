@@ -1,12 +1,12 @@
 
 //-------------------IMPORTS------------------//
 import axios from 'axios';
-import { getAllHotels, getHotelsById } from './hotelsSlice';
+import { actionGetAllHotels } from './hotelSlice';
 
-export function getHotels(){
+export function getAllHotels(){
     return async function(dispatch){
         let hotels = await axios.get('')
-        dispatch(getAllHotels(hotels.data.results))
+        dispatch(actionGetAllHotels(hotels.data.results))
     }
 }
 

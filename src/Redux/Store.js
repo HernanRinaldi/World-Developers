@@ -1,8 +1,8 @@
 
 //------------IMPORTS--------------------//
  import { configureStore } from "@reduxjs/toolkit";
- import hotels from "./hotelsSlice";
- import detail from "./hotelsSlice";
+ import hotels from "./hotel/hotelSlice";
+ import detail from "./hotel/hotelSlice";
 
 
  export default configureStore({
