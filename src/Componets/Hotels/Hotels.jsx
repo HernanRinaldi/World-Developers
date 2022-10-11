@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getHotels } from '../../Redux/Action';
+import { getAllHotels } from '../../Redux/hotel/hotelAction';
 
 export const Hotels = () => {
     const dispatch = useDispatch();
     const { hotels } = useSelector(state=>state.hotels)
 
     useEffect(()=>{
-        dispatch(getHotels())
+        dispatch(getAllHotels())
     },[])
+    
     return (
         <div>
             {
