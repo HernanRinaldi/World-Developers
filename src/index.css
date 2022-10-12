@@ -64,3 +64,31 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ==================================================================
+  PERSONAL STYLE
+================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Average+Sans&family=Rufina:wght@400;700&display=swap');
+
+:root {
+  --clr-very-light-main: #EEFCFE;
+  --clr-light-main: #BEFBFF;
+  --clr-main: #8EDCE6;
+  --clr-dark-main: #56A5AF;  
+  --clr-black: #201200;
+
+  --ff-title: 'Rufina', serif;
+  --ff-body: 'Average Sans', sans-serif;
+}
+
+body {
+  font-family: var(--ff-body);
+  text-align: center;
+  color: var(--clr-black);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ff-title);
+}
