@@ -12,12 +12,10 @@ export const roomSlice = createSlice({
         },
         getRoomById: (state,action)=>{
             state.detail = action.payload
-        },
-        getRoomName: (state, action)=>{
-            state.hotels = action.payload
         }
+        
     }
 })
 
-export const { getAllRooms, getRoomById, getRoomName } = roomSlice.actions
+export const { getAllRooms, getRoomById } = roomSlice.actions
 export default roomSlice.reducer

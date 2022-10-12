@@ -9,7 +9,7 @@ import { getAllRooms } from '../../Redux/room/roomSlice';
 import  './CardStyle.css'
 
 //-----------FUCNTION CARD-----------------//
-export const Rooms = () => {
+export const CardRoom = () => {
     const dispatch = useDispatch();
     const { rooms } = useSelector(state=>state.rooms)
 console.log('info que llega al componente:',rooms)

@@ -1,14 +1,11 @@
 
 //-------------------IMPORTS------------------//
 import axios from 'axios';
-import { getAllRooms, getRoomById, getRoomName } from './roomSlice';
-import {dataBase} from '../../dataBase/dataBase'
-
+import { getAllRooms, getRoomById } from './roomSlice';
 
 export function getRooms(){
     return  async function(dispatch){
         let rooms = await axios.get('http://localhost:3001/room')
-        console.log(rooms)
         dispatch(getAllRooms(rooms.data))
     }
 }
@@ -20,13 +17,4 @@ export function roomById(id){
     }
 }
 
-export function roomByName(name){
-    return async function(dispatch){
-        try {
-            let roomName=await axios.get (`http://localhost:3001/room?name=${name}`)
-            dispatch(getRoomName(roomName.data))
-        } catch (error) {
-            console.log(error)
-        }
-    }
-}
+
