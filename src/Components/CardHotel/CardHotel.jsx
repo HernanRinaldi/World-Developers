@@ -1,6 +1,7 @@
 import React from 'react'
 
 const CardHotel = ({ name, image }) => {
+    
     return (
         <div>
             <p>{name}</p>

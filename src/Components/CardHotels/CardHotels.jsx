@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getHotels } from '../../Redux/hotel/hotelAction';
+import { getHotels } from '../../redux/action/action';
 import  CardHotel  from '../CardHotel/CardHotel';
 
 const CardHotels = () => {
     const dispatch = useDispatch();
-    const { hotels } = useSelector(state=>state.hotels)
+    const { hotels } = useSelector( state => state.hotels )
 
     useEffect(()=>{
-        dispatch(getHotels())
+        dispatch( getHotels() )
     },[])
     
     return (
