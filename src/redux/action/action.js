@@ -1,8 +1,5 @@
-
 import axios from 'axios';
 import { dataBase } from '../../dataBase/dataBase';
-
-
 
 export const GET_ALL_HOTELS = "GET_ALL_HOTELS";
 export const GET_ALL_ROOMS = "GET_ALL_ROOMS";
@@ -31,7 +28,7 @@ export function getRooms() {
     //let rooms = await axios.get(URL)
     dispatch({
       type: GET_ALL_ROOMS,
-      payload: dataBase
+      payload: dataBase[0].rooms
     })
   }
 }
