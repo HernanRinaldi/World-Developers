@@ -16,9 +16,9 @@ export default function Create() {
   const [errors, setErrors] = useState({})
 
 //-------------------------USEEFFECT------------------------------//
-useEffect(() => {
-  dispatch()
-}, [dispatch])
+// useEffect(() => {
+//   dispatch()
+// }, [dispatch])
 
 //------------------------STATE LOCAL FORM------------------------//
 const [ input_hotels, input_sethotels ] = useState({
@@ -26,15 +26,12 @@ const [ input_hotels, input_sethotels ] = useState({
   image:"",
   qualification: 0,
   description:"",
-  country:[],
-  continent:[],
-  
+  city:"",
+  country:"",
+  continent:"",
+
 })
-// const [services, setservices] = useState({
-//   name:"",
-//   image:"",
-//   description:""
-// })
+
 // const [rooms, setrooms] = useState({
 //   name:"",
 //   image:"",
@@ -116,8 +113,10 @@ function handleSubmit(e) {
       image:"",
       qualification: 0,
       description:"",
-      country:[],
-      continent:[],
+      city:"",
+      country:"",
+      continent:"",
+      services:[],
     })
     
     alert('Hotel created successfully')
@@ -131,7 +130,7 @@ return (
   
       <div>
       <form  onSubmit={(e) => handleSubmit(e)}>
-      
+      <h1>Hotel</h1>
       {/*-----------------------NAME------------------------ */} 
       <div className="" >
       <input
@@ -155,17 +154,7 @@ return (
       {errors.image && <p className="" >{errors.image}</p>}
       </div>
 
-      {/*--------------------QUALIFICATION--------------------------- */}
-      <div className=''>
-      <label className=''>Qualification</label>
-      <input 
-      className="range"
-      type="range" min="0" max="5" 
-      value={input_hotels.qualification} 
-      name="qualification" 
-      onChange={(e) => handleChange(e)} />
-      {<p className="" > Value: {input_hotels.qualification}</p>}
-    </div>
+
 
       {/*--------------------------DESCRIPTION----------------------- */}
       <div >
@@ -182,10 +171,89 @@ return (
     </div>
 
 
+        {/*--------------------QUALIFICATION--------------------------- */}
+      <div className=''>
+      <label className=''>Qualification</label>
+      <input 
+      className="range"
+      type="range" min="0" max="5" 
+      value={input_hotels.qualification} 
+      name="qualification" 
+      onChange={(e) => handleChange(e)} />
+      {<p className="" > Value: {input_hotels.qualification}</p>}
+    </div>
+
+      {/*--------------------------CITY----------------------- */}
+      <h3>Location:</h3>
+      <div >
+      <input
+      className="" 
+      placeholder="City..."
+      type="text" 
+      value={input_hotels.city} 
+      name="city" 
+      onChange={(e) => handleChange(e)}>
+      </input>
+      {errors.city && <p className="">{errors.city}</p>}
+      </div>
+
+     {/*--------------------------COUNTRY----------------------- */}
+     <div >
+      <input
+      className="" 
+      placeholder="Country..."
+      type="text" 
+      value={input_hotels.country} 
+      name="country"  
+      onChange={(e) => handleChange(e)}>
+      </input>
+      {errors.country && <p className="">{errors.country}</p>}
+      </div>
+
+      {/*--------------------------CONTINENT----------------------- */}
+     <div >
+      <input
+      className="" 
+      placeholder="Continent..."
+      type="text" 
+      value={input_hotels.continent} 
+      name="continent" 
+      onChange={(e) => handleChange(e)}>
+      </input>
+      {errors.continent && <p className="">{errors.continent}</p>}
+      </div>
+
+      {/*--------------------------SERVICES----------------------- */}
+     <div >
+      <h3>Services:</h3>
+      <select 
+       
+      value={input_hotels.services} 
+      name="services" 
+      onChange={(e) => handleChange(e)}>
+        <option>meeting</option>
+        <option>spa</option>
+        <option>piscina</option>
+        <option>wifi</option>
+        <option>parking</option>
+        <option>admite mascotas</option>
+        <option>barbacoa</option>
+        <option>gym</option>
+        <option>Biking Tours</option>
+      </select>
+      {errors.services && <p className="">{errors.services}</p>}
+      </div>
+
+    {/*----------------------------BUTTON------------------------ */}
+    <div>
+      <button className='' 
+      type="submit" 
+      onClick={(e) => handleSubmit(e)}>Create</button>
+    </div>
 
     </div>
     </form>
-      </div>
+    </div>
 
 )
 }
