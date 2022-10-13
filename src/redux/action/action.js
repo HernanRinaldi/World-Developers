@@ -25,7 +25,7 @@ export function getHotels() {
 
 export function getRooms() {
   return async function (dispatch) {
-    //let rooms = await axios.get(URL)
+    //let rooms = await axios.get(URL) 
     dispatch({
       type: GET_ALL_ROOMS,
       payload: dataBase[0].rooms
