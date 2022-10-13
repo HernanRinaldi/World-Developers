@@ -2,13 +2,13 @@ import {
   GET_ALL_HOTELS,
   SEARCH_NAME,
   GET_HOTEL_DETAIL,
-  
+  GET_ALL_SERVICES_HOTEL
 } from '../action/action';
 
 const initialStateHotel = {
   hotels: [],
   detailHotel: {},
-
+  servicesHotel:[],
 };
 
 const hotels_reducer = (state = initialStateHotel, action) => {
@@ -29,6 +29,11 @@ const hotels_reducer = (state = initialStateHotel, action) => {
       return {
         ...state,
         detailHotel: action.payload
+      }
+    case GET_ALL_SERVICES_HOTEL:
+      return {
+        ...state,
+        servicesHotel: action.payload
       }
 
     default:

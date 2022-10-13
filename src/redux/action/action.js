@@ -1,8 +1,5 @@
-
 import axios from 'axios';
 import { dataBase } from '../../dataBase/dataBase';
-
-
 
 export const GET_ALL_HOTELS = "GET_ALL_HOTELS";
 export const GET_ALL_ROOMS = "GET_ALL_ROOMS";
@@ -12,7 +9,7 @@ export const GET_ROOMS_DETAIL = "GET_ROOMS_DETAIL";
 export const CLEAR_HOTEL_DETAIL = "CLEAR_HOTEL_DETAIL";
 export const CLEAR_ROOM_DETAIL = "CLEAR_ROOM_DETAIL";
 export const GET_SERVICE_HOTEL = "GET_SERVICE_HOTEL";
-
+export const GET_ALL_SERVICES_HOTEL = 'GET_ALL_SERVICES_HOTEL'
 
 //----------------------- HOTELS ------------------------------//
 
@@ -31,10 +28,11 @@ export function getRooms() {
     //let rooms = await axios.get(URL)
     dispatch({
       type: GET_ALL_ROOMS,
-      payload: dataBase
+      payload: dataBase[0].rooms
     })
   }
 }
+
 
 export function hotelByName(name) {
   return async function (dispatch) {
@@ -48,29 +46,39 @@ export function hotelByName(name) {
       }
       //dispatch(getHotelName(datos.name))
       //let hotelName = await axios.get (`http://localhost:3001/hotel?name=${name}`)
-
+      
     } catch (error) {
       console.log(error)
     }
   }
 }
 
-export function hotelById(id) {
-  // return async function (dispatch) {
-  //   try {
-  //     let hotelDetail = await axios.get(`http://localhost:3001/hotel/${id}`)
-  //     dispatch({
-  //       type: GET_HOTEL_DETAIL,
-  //       payload: hotelDetail.data
-  //     })
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+export function getAllServicesHotel() {
+  return async function(dispatch) {
+    // let json = await axios.get('')
+    return dispatch({
+      type: 'GET_ALL_SERVICES_HOTEL',
+      payload: dataBase,
+    })
+  }
 }
 
-export function roomById(id) {
+export function hotelById(id) {
   // return async function (dispatch) {
+    //   try {
+      //     let hotelDetail = await axios.get(`http://localhost:3001/hotel/${id}`)
+      //     dispatch({
+        //       type: GET_HOTEL_DETAIL,
+        //       payload: hotelDetail.data
+        //     })
+        //   } catch (error) {
+          //     console.log(error)
+          //   }
+          // }
+        }
+        
+        export function roomById(id) {
+          // return async function (dispatch) {
   //   try {
   //     let roomDetail = await axios.get(`http://localhost:3001/room/${id}`)
   //     dispatch({
