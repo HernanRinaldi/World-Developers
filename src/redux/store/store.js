@@ -1,15 +1,16 @@
-//------------IMPORTS--------------------//
-
-import  rootReducer  from '../reducer/reducer';
-// nos trajimos el reducer //
+import reducerHotel from '../reducer/reducerHotel.js';
+import reducerRoom from '../reducer/reducerRoom.js';
 import { legacy_createStore as createStore, applyMiddleware}  from 'redux';
-// nos trajimos createStore para crear el store y 
-// applyMiddleware es para aplicar midlerares a la store //
 import { composeWithDevTools } from 'redux-devtools-extension';
-// el compose nos permite ver las devtools //
 import thunk from 'redux-thunk';
-// sirve para ver cosas de forma asincronicas //
-// osea realizar todos los pedidos de informacion //
-const   store= createStore( rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+
+const combineReducers= require('redux').combineReducers;
+
+const rootReducers=combineReducers({
+    reducerHotel,
+    reducerRoom
+})
+
+const   store= createStore( rootReducers, composeWithDevTools(applyMiddleware(thunk)))
 
 export default store;

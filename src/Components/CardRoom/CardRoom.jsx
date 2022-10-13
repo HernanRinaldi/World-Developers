@@ -2,18 +2,18 @@
 //---------------IMPORTS---------------//
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllRooms } from '../../Redux/room/roomSlice';
+import { getRooms } from '../../redux/action/action';
 
 //----------------CSS-------------------//
 import  './CardStyle.css'
 
 //-----------FUCNTION CARD-----------------//
-export const CardRoom = () => {
+const CardRoom = () => {
     const dispatch = useDispatch();
-    const { rooms } = useSelector(state=>state.rooms)
-console.log('info que llega al componente:',rooms)
+    const  rooms  = useSelector(state=>state.reducerRoom.rooms)
+
     useEffect(()=>{
-        dispatch(getAllRooms())
+        dispatch(getRooms())
     },[])
     
     return (
@@ -31,3 +31,5 @@ console.log('info que llega al componente:',rooms)
         </div>
     )
 }
+
+export default CardRoom;
