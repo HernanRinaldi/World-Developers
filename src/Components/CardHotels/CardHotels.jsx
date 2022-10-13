@@ -5,11 +5,11 @@ import  CardHotel  from '../CardHotel/CardHotel';
 
 const CardHotels = () => {
     const dispatch = useDispatch();
-    const { hotels } = useSelector( state => state.hotels )
+    const  hotels  = useSelector( state => state.reducerHotel.hotels )
 
     useEffect(()=>{
         dispatch( getHotels() )
-    },[])
+    },[dispatch])
     
     return (
         <div>
