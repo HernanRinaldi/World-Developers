@@ -9,8 +9,8 @@ export const dataBase = [
        qualification: 4,
        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid voluptas illum molestiae praesentium repudiandae consectetur ab qui, porro ipsam hic a cumque quas. Obcaecati neque praesentium numquam sed. Harum, modi.",
        location: {
-           country:"Singapur",
-           continent: "Asia",
+           name:"Singapur",
+           url: "url de la localizacion",
        },
        services: [
            {
