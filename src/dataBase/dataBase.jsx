@@ -9,6 +9,7 @@ export const dataBase = [
        qualification: 4,
        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid voluptas illum molestiae praesentium repudiandae consectetur ab qui, porro ipsam hic a cumque quas. Obcaecati neque praesentium numquam sed. Harum, modi.",
        location: {
+            city:"tailandia",
            country:"Singapur",
            continent: "Asia",
        },
@@ -89,7 +90,7 @@ export const dataBase = [
    }, 
    {
        id: 2,
-       name:  "Hotel Paraiso",
+       name:  "Hotel Patricio",
        image: "http://thehalalworld.com/uploads/pages/Amadeus-Study-Highlights-The-Needs-of-Halal-Travellers.jpg",
        qualification: 4,
        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid voluptas illum molestiae praesentium repudiandae consectetur ab qui, porro ipsam hic a cumque quas. Obcaecati neque praesentium numquam sed. Harum, modi.",
