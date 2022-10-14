@@ -32,13 +32,13 @@ const [ input_hotels, input_sethotels ] = useState({
 
 })
 
-// const [rooms, setrooms] = useState({
-//   name:"",
-//   image:"",
-//   price: 0,
-//   description:"",
-//   category:[],
-// })
+const [input_rooms, input_setrooms] = useState({
+  name:"",
+  image:"",
+  price: 0,
+  description:"",
+  category:[],
+})
 
 //------------------------VALIDATIONS-----------------------------//
 //let validateName = /^[a-zA-Z\s]+$/;
@@ -86,7 +86,7 @@ const validate = (input_hotels) => {
   
 }
 
-//------------------FUNCTIONS HANDLE-------------------//
+//------------------ HANDLE CHANGE HOTELS-------------------//
 function handleChange(e){
   e.preventDefault();
   input_sethotels({
@@ -100,7 +100,23 @@ function handleChange(e){
   //   })
   // )
 }
-//----------------FUNCTION HANDLE SUBMIT------------------//
+
+//------------------ HANDLE CHANGE ROOMS-------------------//
+function handleChangeRooms(e){
+  e.preventDefault();
+  input_rooms({
+    ...input_rooms,
+    [e.target.name]: e.target.value
+  })
+  setErrors(
+    validate({
+      ...input_hotels,
+      [e.target.name]: e.target.value,
+    })
+  )
+}
+
+//---------------- HANDLE SUBMIT HOTELS------------------//
 
 function handleSubmit(e) {
   e.preventDefault()
@@ -124,10 +140,32 @@ function handleSubmit(e) {
     alert("Check the fields")
   } 
 }
+//----------------HANDLE SUBMIT ROOMS------------------//
+function handleSubmitRooms(e) {
+  e.preventDefault()
+  
+  if (Object.keys(errors).length === 0 && input_rooms.category.length > 0) {
+    // dispatch(createRooms(input_hotels))
 
+    input_sethotels({
+      name:"",
+      image:"",
+      price:0,
+      description:"",
+      category:[],
+    })
+    
+    alert('Rooms created successfully')
+  } else {
+    alert("Check the fields")
+  } 
+}
+
+
+//------------------------------------------RETURN----------------------------//
 return (
 
-  
+  <div>
       <div>
       <form  onSubmit={(e) => handleSubmit(e)}>
       <h1>Hotel</h1>
@@ -184,7 +222,7 @@ return (
     </div>
 
       {/*--------------------------CITY----------------------- */}
-      <h3>Location:</h3>
+      <h4>Location:</h4>
       <div >
       <input
       className="" 
@@ -225,7 +263,7 @@ return (
 
       {/*--------------------------SERVICES----------------------- */}
      <div >
-      <h3>Services:</h3>
+      <h4>Services:</h4>
       <select 
        
       value={input_hotels.services} 
@@ -254,6 +292,63 @@ return (
     </div>
     </form>
     </div>
+  {/*---------------------------------------FORMULARIO DE ROOMS------------------------------------- */}
 
+  <div>
+  <form onSubmit={(e) => handleSubmitRooms(e)} >
+      <h1>Rooms:</h1>
+      {/*-------------------SELECT HOTELS---------------- */}
+      <select>
+        <option>Hotels:</option>
+      </select>
+
+      {/*-----------------------NAME------------------------ */} 
+      <input
+      className="" 
+      placeholder="Name..."
+      type="text" value={input_rooms.name} 
+      name="name" 
+      onChange={(e) => handleChangeRooms(e)} />
+      {/* {errors.name && <p className="" >{errors.name}</p>} */}
+
+      {/*-----------------------IMAGE------------------------ */} 
+      <input
+      className=""
+      placeholder= "Load URL Image..." 
+      type="url" 
+      value={input_rooms.image} 
+      name="image" 
+      onChange={(e) => handleChangeRooms(e)} />
+      {/* {errors.image && <p className="" >{errors.image}</p>} */}
+
+      {/*-----------------------PRICE------------------------ */} 
+      <label className=''>Price:</label>
+      <input 
+      className="range"
+      type="range" min="0" max="1000" 
+      value={input_rooms.price} 
+      name="price" 
+      onChange={(e) => handleChange(e)} />
+      {<p className="" > Value: U${input_hotels.price}</p>}
+
+      {/*--------------------------DESCRIPTION----------------------- */}  
+      <textarea
+      className="" 
+      placeholder="Description..."
+      type="text" 
+      value={input_rooms.description} 
+      name="description" 
+      maxLength="1000" 
+      onChange={(e) => handleChange(e)}>
+      </textarea>
+      {errors.description && <p className="">{errors.description}</p>}
+      {/*--------------------------DESCRIPTION----------------------- */}
+      <select>
+        <option>Category:</option>
+      </select>
+
+  </form>
+  </div>
+  </div>
 )
 }
