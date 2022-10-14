@@ -51,7 +51,6 @@ const HotelDetail = () => {
       ) : (
         <h3>Loading detail</h3>
       )}
-      <Footer />
     </div>
   );
 };

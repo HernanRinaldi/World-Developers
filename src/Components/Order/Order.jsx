@@ -8,7 +8,6 @@ import { Link } from "react-router-dom"
 export default function Order() {
     const dispatch = useDispatch()
     const [order, setOrder] = useState('')
-    const [currentPage, setCurrentPage] = useState(1)
 
     useEffect(() => {
         dispatch(getHotels())
@@ -20,7 +19,7 @@ export default function Order() {
             dispatch(getHotels())
         } else {
             dispatch(orderBy(e.target.value))
-            setCurrentPage(1)
+            // setPages(0)
             setOrder(`Ordenado ${e.target.value}`)
         }
     }

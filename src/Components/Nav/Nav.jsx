@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import logo from "./world-developers.png";
 import Search from "../Search/Search";
 import Order from "../Order/Order";
+import Filter from "../Filter/Filter";
+
 // import Search from "../Search/Search";
 import "./Styles.css";
 
@@ -60,6 +62,9 @@ export default function Nav() {
             </li>
             <li class="nav-item">
               <Order />
+            </li>
+            <li class="nav-item">
+              <Filter />
             </li>
           </ul>
         </div>
