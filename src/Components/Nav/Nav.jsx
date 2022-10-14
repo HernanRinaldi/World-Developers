@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from '../../dataBase/it_world.png';
 import Search from '../Search/Search';  
+import Order from "../Order/Order"
 
 // import Search from "../Search/Search";
 import "./Styles.css";
@@ -30,7 +31,7 @@ export default function Nav() {
             <ul class="navbar-nav ">
               <li class="nav-item">
                 <Link to="/home">
-                  <a class="nav-link active text-dark" aria-current="page" href="#">HOME</a>
+                  <a class="nav-link active text-dark" aria-current="page" href="/home">HOME</a>
                 </Link>
               </li>
               <li class="nav-item">
@@ -42,16 +43,21 @@ export default function Nav() {
                 <a class="nav-link text-dark" href="#">EVENTS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-dark" href="#">CONTACT</a>
+                <a class="nav-link text-dark" href="/home/dashboard">CREATE</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-dark" href="#">ABOUT US</a>
               </li>
               <button type="button" class="btn btn-outline-primary" disabled>LOG IN</button>
+              <li class="nav-item">
+                <Search/>
+              </li>
+              <li class="nav-item">
+                <Order/>
+              </li>
             </ul>
           </div>
-          <div>
-          <Search/>
+          <div>     
         </div>
         </div>
         
