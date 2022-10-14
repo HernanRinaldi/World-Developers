@@ -12,7 +12,6 @@ export const CLEAR_ROOM_DETAIL = "CLEAR_ROOM_DETAIL";
 export const GET_ALL_SERVICES_HOTEL = "GET_ALL_SERVICES_HOTEL";
 export const POST_HOTEL = "POST_HOTEL";
 export const POST_ROOM = "POST_ROOM";
-export const ORDER_BY = "ORDER_BY";
 export const GET_ALL_LOCATIONS = 'GET_ALL_LOCATIONS'
 export const FILTER_BY_CITY = 'FILTER_BY_CITY'
 
@@ -83,9 +82,9 @@ export function getDetailHotel(id){
   }
 }
 
-export function getHotels() {
+export function getHotels(page) {
   return async function (dispatch) {
-    let hotels = await axios.get(`${BACK_URL}/hotels`)
+    let hotels = await axios.get(`${BACK_URL}/hotels?page=` + page)
     dispatch({
       type: GET_ALL_HOTELS,
       payload: hotels.data
@@ -93,11 +92,11 @@ export function getHotels() {
   }
 }
 
-export function hotelByName(name) {
+export function hotelByName(name, page) {
   return async function (dispatch) {
     try {
       if (name) {
-        let hotelName = await axios.get (`${BACK_URL}/hotels?name=${name}`)
+        let hotelName = await axios.get (`${BACK_URL}/hotels?name=${name}&page=${page}`)
         return dispatch({
           type: SEARCH_NAME_HOTEL,
           payload: hotelName.data
@@ -179,12 +178,12 @@ export function getAllServicesHotel(){
   }
 }
 
-export function orderBy(payload){
-  return{
-      type: ORDER_BY,
-      payload
-  }
-};
+// export function orderBy(payload){
+//   return{
+//       type: ORDER_BY,
+//       payload
+//   }
+// };
 
 //HERNAN
 
