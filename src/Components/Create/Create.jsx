@@ -2,20 +2,17 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { createHotels } from '../../redux/action/action';
 
 
-
-
-//----------------------------FUNCTION CREATE----------------//
 export default function Create() {
 
   //-------------------------- STATE ------------------------//
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [errors, setErrors] = useState({})
-
   //-------------------------USEEFFECT------------------------------//
+  // ---------------cargar los services...
   // useEffect(() => {
   //   dispatch()
   // }, [dispatch])
@@ -32,98 +29,24 @@ export default function Create() {
 
   })
 
-  const [input_rooms, input_setrooms] = useState({
-    name: "",
-    image: "",
-    price: 0,
-    description: "",
-    category: [],
-  })
-
-  //------------------------VALIDATIONS-----------------------------//
-  //let validateName = /^[a-zA-Z\s]+$/;
-  //let validateUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
-
-  const validate = (input_hotels) => {
-    let errors = {}
-
-    // if (!input_hotels.name.length) {
-    //   errors.name = 'name cannot be empty'
-    // }
-
-    // if (!validateName.test(input_hotels.name)) {
-    //   errors.name = 'Special characters or numbers are not allowed'
-    // }
-
-    // if (recipes.find((e) => e.name.toLowerCase() === input_hotels.name.toLowerCase())) {
-    //   alert(`The name ${input_hotels.name} already exist, please choose another one!`)
-    // }
-    // if (input_hotels.image && !validateUrl.test(input_hotels.image)) {
-    //   errors.image = 'This is not a valid URL'
-    // }
-
-    // if (!input_hotels.summary.length) {
-    //   errors.summary = 'Summary cannot be empty'
-    // }
-
-    // if (input_hotels.summary.length < 40) {
-    //   errors.summary = 'Summary must be at least 40 characters'
-    // }
-
-    // if (input_hotels.healthScore < 1 || input_hotels.healthScore > 100) {
-    //   errors.healthScore = 'The healt score must be a number between 1 - 100'
-    // }
-
-    // if (!input_hotels.steps.length) {
-    //   errors.steps = 'Your recipe must have steps to follow'
-    // }
-
-    // if (input_hotels.steps.length < 40) {
-    //   errors.steps = 'Your recipe must have more details'
-    // }
-
-    // return errors;
-
-  }
-
-  //------------------ HANDLE CHANGE HOTELS-------------------//
+  //------------------ HANDLE CHANGE HOTELS -------------------//
   function handleChange(e) {
     e.preventDefault();
     input_sethotels({
       ...input_hotels,
       [e.target.name]: e.target.value
     })
-    // setErrors(
-    //   validate({
-    //     ...input_hotels,
-    //     [e.target.name]: e.target.value,
-    //   })
-    // )
-  }
 
-  //------------------ HANDLE CHANGE ROOMS-------------------//
-  function handleChangeRooms(e) {
-    e.preventDefault();
-    input_rooms({
-      ...input_rooms,
-      [e.target.name]: e.target.value
-    })
-    setErrors(
-      validate({
-        ...input_hotels,
-        [e.target.name]: e.target.value,
-      })
-    )
   }
 
   //---------------- HANDLE SUBMIT HOTELS------------------//
 
   function handleSubmit(e) {
     e.preventDefault()
-
-    if (Object.keys(errors).length === 0 && input_hotels.country.length > 0) {
-      // dispatch(createHotels(input_hotels))
-
+    console.log(input_hotels)
+    if (input_hotels) {
+      dispatch(createHotels(input_hotels))
+      
       input_sethotels({
         name: "",
         image: "",
@@ -140,27 +63,6 @@ export default function Create() {
       alert("Check the fields")
     }
   }
-  //----------------HANDLE SUBMIT ROOMS------------------//
-  function handleSubmitRooms(e) {
-    e.preventDefault()
-
-    if (Object.keys(errors).length === 0 && input_rooms.category.length > 0) {
-      // dispatch(createRooms(input_hotels))
-
-      input_sethotels({
-        name: "",
-        image: "",
-        price: 0,
-        description: "",
-        category: [],
-      })
-
-      alert('Rooms created successfully')
-    } else {
-      alert("Check the fields")
-    }
-  }
-
 
   //------------------------------------------RETURN----------------------------//
   return (
@@ -178,7 +80,6 @@ export default function Create() {
               type="text" value={input_hotels.name}
               name="name"
               onChange={(e) => handleChange(e)} />
-            {errors.name && <p className="" >{errors.name}</p>}
 
             {/*--------------------------IMAGE------------------- */}
             <div className=''>
@@ -189,7 +90,6 @@ export default function Create() {
                 value={input_hotels.image}
                 name="image"
                 onChange={(e) => handleChange(e)} />
-              {errors.image && <p className="" >{errors.image}</p>}
             </div>
 
 
@@ -205,7 +105,6 @@ export default function Create() {
                 maxLength="1000"
                 onChange={(e) => handleChange(e)}>
               </textarea>
-              {errors.description && <p className="">{errors.description}</p>}
             </div>
 
 
@@ -218,7 +117,6 @@ export default function Create() {
                 value={input_hotels.qualification}
                 name="qualification"
                 onChange={(e) => handleChange(e)} />
-              {<p className="" > Value: {input_hotels.qualification}</p>}
             </div>
 
             {/*--------------------------CITY----------------------- */}
@@ -232,7 +130,6 @@ export default function Create() {
                 name="city"
                 onChange={(e) => handleChange(e)}>
               </input>
-              {errors.city && <p className="">{errors.city}</p>}
             </div>
 
             {/*--------------------------COUNTRY----------------------- */}
@@ -245,7 +142,6 @@ export default function Create() {
                 name="country"
                 onChange={(e) => handleChange(e)}>
               </input>
-              {errors.country && <p className="">{errors.country}</p>}
             </div>
 
             {/*--------------------------CONTINENT----------------------- */}
@@ -258,7 +154,6 @@ export default function Create() {
                 name="continent"
                 onChange={(e) => handleChange(e)}>
               </input>
-              {errors.continent && <p className="">{errors.continent}</p>}
             </div>
 
             {/*--------------------------SERVICES----------------------- */}
@@ -279,7 +174,6 @@ export default function Create() {
                 <option>gym</option>
                 <option>Biking Tours</option>
               </select>
-              {errors.services && <p className="">{errors.services}</p>}
             </div>
 
             {/*----------------------------BUTTON------------------------ */}
