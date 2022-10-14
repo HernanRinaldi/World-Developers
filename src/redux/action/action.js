@@ -9,9 +9,10 @@ export const GET_HOTEL_DETAIL = "GET_HOTEL_DETAIL";
 export const GET_ROOMS_DETAIL = "GET_ROOMS_DETAIL";
 export const CLEAR_HOTEL_DETAIL = "CLEAR_HOTEL_DETAIL";
 export const CLEAR_ROOM_DETAIL = "CLEAR_ROOM_DETAIL";
-export const GET_SERVICE_HOTEL = "GET_SERVICE_HOTEL";
+export const GET_ALL_SERVICES_HOTEL = "GET_ALL_SERVICES_HOTEL";
 export const POST_HOTEL = "POST_HOTEL";
 export const POST_ROOM = "POST_ROOM";
+export const ORDER_BY = "ORDER_BY";
 
 
 const BACK_URL = "http://localhost:3001"
@@ -125,4 +126,66 @@ export function roomByName(name) {
   }
 }
 
+//PAULA
 
+export function getAllServicesHotel(){
+  return async function (dispatch) {
+    try {
+      const services= await axios.get(`${BACK_URL}/serviceHotels`)
+      return dispatch({
+        type: GET_ALL_SERVICES_HOTEL,
+        payload: services
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
+export function orderBy(payload){
+  return{
+      type: ORDER_BY,
+      payload
+  }
+};
+
+//HERNAN
+
+//-------------------------CREATE HOTELS----------------------//
+export function createHotels(payload) {
+
+  return async function(dispatch) {
+
+      try {
+          const newHotel = await axios.post( URL_POST_HOTEL , payload)
+          //console.log("info hacia el back: ", payload)
+          return dispatch({
+              type: CREATE_HOTELS,
+              payload: newHotel
+          })
+      } catch (error) {
+          console.log(error && alert("Error, when create Hotel!!"))
+
+      }
+  }
+}
+
+//-------------------------CREATE ROOMS----------------------//
+export function createRooms(payload) {
+
+  return async function(dispatch) {
+
+      try {
+          const newRoom = await axios.post( URL_POST_ROOM , payload)
+          //console.log("info hacia el back: ", payload)
+          return dispatch({
+              type: CREATE_ROOMS,
+              payload: newRoom
+          })
+      } catch (error) {
+          console.log(error && alert("Error, when create Room!!"))
+
+      }
+  }
+}
+//-------------------------CREATE ROOMS----------------------//
