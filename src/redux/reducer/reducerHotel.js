@@ -8,7 +8,7 @@ import {
   GET_ALL_LOCATIONS,
   FILTER_BY_CITY,
   ORDER_BY,
-  CLEAR_DETAIL
+  CLEAR_DETAIL,
   
 } from '../action/action';
 
