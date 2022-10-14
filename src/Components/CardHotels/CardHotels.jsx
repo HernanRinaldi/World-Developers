@@ -1,21 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getHotels } from "../../redux/action/action";
+import React from "react";
 import CardHotel from "../CardHotel/CardHotel";
 import Loader from "../Loader/Loader";
 import './CardHotels.css'
 
-const CardHotels = () => {
-  const dispatch = useDispatch();
-  const hotels = useSelector((state) => state.reducerHotel.hotels);
-
-  useEffect(() => {
-    dispatch(getHotels());
-  }, [dispatch]);
-
+const CardHotels = ({ actualHotels }) => {
   return (
     <div className="cardHotels-container">
-      {hotels.length ? hotels.map((h) => (
+      {actualHotels.length ? actualHotels.map((h) => (
         <CardHotel
           key={h.id}
           id={h.id}

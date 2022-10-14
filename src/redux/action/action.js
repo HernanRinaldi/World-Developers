@@ -21,9 +21,33 @@ export const URL_POST_ROOM = "URL_POST_ROOM";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const ORDER_BY = "ORDER_BY";
 
+export const SET_ACTUAL_PAGE = "SET_ACTUAL_PAGE";
+export const SET_MIN_PAGE_NUMBER = "SET_MIN_PAGE_NUMBER";
+export const SET_MAX_PAGE_NUMBER = "SET_MAX_PAGE_NUMBER";
 
 
 const BACK_URL = "http://localhost:3001"
+
+//pagination
+export function setActualPage (n) {
+  return {
+    type: SET_ACTUAL_PAGE,
+    payload: n
+  }
+}
+export function setMinPageNumber (n) {
+  return {
+    type: SET_MIN_PAGE_NUMBER,
+    payload: n
+  }
+}
+export function setMaxPageNumber (n) {
+  return {
+    type: SET_MAX_PAGE_NUMBER,
+    payload: n
+  }
+}
+
 //----------------------- HOTELS ------------------------------//
 
 export function clearDetail () {
