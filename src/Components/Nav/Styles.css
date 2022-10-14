@@ -1,16 +1,5 @@
 /*   ESTILOS PARA EL NAVEGADOR   */
 
-.gridContainer {
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 100px;
-}
-.navImg {
-  background-image: url("../LandingPage/planeta-imagen-animada-0023.gif");
-  background-repeat: no-repeat;
-}
-
-.navText {
-  color: rgb(224, 79, 11);
-  background-repeat: no-repeat;
-}
+.container-nav{
+  background-color: var(--clr-very-light-main) !important;
+} 
