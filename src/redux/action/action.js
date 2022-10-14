@@ -14,6 +14,12 @@ export const POST_HOTEL = "POST_HOTEL";
 export const POST_ROOM = "POST_ROOM";
 export const ORDER_BY = "ORDER_BY";
 
+export const CREATE_HOTELS = "CREATE_HOTELS";
+export const CREATE_ROOMS = "CREATE_ROOMS";
+export const URL_POST_HOTEL = "URL_POST_HOTEL";
+export const URL_POST_ROOM = "URL_POST_ROOM";
+
+
 
 const BACK_URL = "http://localhost:3001"
 //----------------------- HOTELS ------------------------------//
