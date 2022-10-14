@@ -5,12 +5,15 @@ import {
   GET_ALL_SERVICES_HOTEL,
   CREATE_HOTELS,
   CREATE_ROOMS,
+  GET_ALL_LOCATIONS,
+  FILTER_BY_CITY
 } from '../action/action';
 
 const initialStateHotel = {
   hotels: [],
   detailHotel: {},
   servicesHotel: [],
+  location: []
 };
 
 const hotels_reducer = (state = initialStateHotel, action) => {
@@ -32,7 +35,6 @@ const hotels_reducer = (state = initialStateHotel, action) => {
         ...state,
         detailHotel: action.payload
       }
-
     case GET_ALL_SERVICES_HOTEL:
       return {
         ...state,
@@ -43,9 +45,22 @@ const hotels_reducer = (state = initialStateHotel, action) => {
       return {
         ...state,
       }
+      
     case CREATE_ROOMS:
       return {
         ...state,
+      }
+  
+    case GET_ALL_LOCATIONS:
+      return {
+        ...state,
+        location: action.payload
+      }
+    
+    case FILTER_BY_CITY:
+      return {
+        ...state,
+        hotels: action.payload
       }
 
     default:

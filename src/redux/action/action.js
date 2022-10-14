@@ -13,6 +13,8 @@ export const GET_ALL_SERVICES_HOTEL = "GET_ALL_SERVICES_HOTEL";
 export const POST_HOTEL = "POST_HOTEL";
 export const POST_ROOM = "POST_ROOM";
 export const ORDER_BY = "ORDER_BY";
+export const GET_ALL_LOCATIONS = 'GET_ALL_LOCATIONS'
+export const FILTER_BY_CITY = 'FILTER_BY_CITY'
 
 export const CREATE_HOTELS = "CREATE_HOTELS";
 export const CREATE_ROOMS = "CREATE_ROOMS";
@@ -23,6 +25,28 @@ export const URL_POST_ROOM = "URL_POST_ROOM";
 
 const BACK_URL = "http://localhost:3001"
 //----------------------- HOTELS ------------------------------//
+
+export function filterByCity (value) {
+  return async function (dispatch) {
+    const filteredHotelByCity = await axios.get(`${BACK_URL}/filtersHotels/location?filter=${value}`)
+    dispatch({
+      type: FILTER_BY_CITY,
+      payload: filteredHotelByCity.data
+    })
+  }
+}
+
+export function getLocations() {
+  return async function (dispatch) {
+    const hotels = await axios.get(`${BACK_URL}/hotels`)
+    const citiesSet = new Set(hotels.data.map(h => h.Locations.map(l => l.city)).flat())
+    const citiesArr = [...citiesSet]
+    dispatch({
+      type: GET_ALL_LOCATIONS,
+      payload: citiesArr
+    })
+  }
+}
 
 export function postHotel(payload){
   return async function(dispatch) {
