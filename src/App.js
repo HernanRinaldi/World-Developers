@@ -12,7 +12,7 @@ import HotelDetail from './Components/HotelDetail/HotelDetail.jsx'
 function App() {
   return (
     <div>
-      {/* <Nav/> */}
+      <Nav/>
       <Switch>
         <Route exact path="/home/dashboard" component={ Create }></Route>
         <Route exact path="/home/loging" component={ Loging }></Route>

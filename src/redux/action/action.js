@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { dataBase } from '../../dataBase/dataBase';
 
 export const GET_ALL_HOTELS = "GET_ALL_HOTELS";
 export const GET_ALL_ROOMS = "GET_ALL_ROOMS";
@@ -20,6 +19,7 @@ export const CREATE_ROOMS = "CREATE_ROOMS";
 export const URL_POST_HOTEL = "URL_POST_HOTEL";
 export const URL_POST_ROOM = "URL_POST_ROOM";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
+export const ORDER_BY = "ORDER_BY";
 
 
 
@@ -178,12 +178,12 @@ export function getAllServicesHotel(){
   }
 }
 
-// export function orderBy(payload){
-//   return{
-//       type: ORDER_BY,
-//       payload
-//   }
-// };
+export function orderBy(payload){
+  return{
+      type: ORDER_BY,
+      payload
+  }
+};
 
 //HERNAN
 
