@@ -27,6 +27,7 @@ export function getRooms() {
   return async function (dispatch) {
     let rooms = await axios.get(`${BACK_URL}/rooms`)
     dispatch({
+      type: GET_ALL_ROOMS,
       payload: rooms.data
     })
   }
@@ -75,3 +76,4 @@ export function roomById(id) {
        console.log(error)
      }
    }
+}

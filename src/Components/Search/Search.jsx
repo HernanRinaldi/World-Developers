@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {hotelByName} from '../../redux/action/action';
-// import "./Styles.css";
+//import "./Styles.css";
 
 //--------------FUNCTION-----------------//
 /* export default function Search() {
@@ -30,7 +30,7 @@ import {hotelByName} from '../../redux/action/action';
   );
 } */
 
-export default function Search({setCurrentPage}) {
+export default function Search() {
   const dispatch = useDispatch()
   const [name, setName] = useState("");
 
@@ -41,7 +41,7 @@ export default function Search({setCurrentPage}) {
    function handleSubmit(e){
       e.preventDefault();
       dispatch(hotelByName(name));
-      setCurrentPage(1);
+      
    }
   return (
       <div className='input-div'> 
