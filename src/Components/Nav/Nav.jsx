@@ -1,7 +1,8 @@
 //---------------IMPORTS---------------//
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from '../../dataBase/it_world.png'
+import logo from '../../dataBase/it_world.png';
+import Search from '../Search/Search';  
 
 // import Search from "../Search/Search";
 import "./Styles.css";
@@ -49,7 +50,11 @@ export default function Nav() {
               <button type="button" class="btn btn-outline-primary" disabled>LOG IN</button>
             </ul>
           </div>
+          <div>
+          <Search/>
         </div>
+        </div>
+        
     </nav>
   )
 }
