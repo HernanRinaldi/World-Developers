@@ -1,7 +1,7 @@
 //---------------IMPORTS---------------//
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import {hotelByName} from '../../redux/action/action';
+import { hotelByName } from '../../redux/action/action';
 //import "./Styles.css";
 
 //--------------FUNCTION-----------------//
@@ -21,41 +21,36 @@ import {hotelByName} from '../../redux/action/action';
     setName('');
   } */
 
-  //----------------RETURN------------------//
- /*  return (
-    <div>
-      <input type='text' placeholder='Search hotel...' onChange={handleInputChange} />
-      <button type="submit" onClick={handleSubmit}>Search</button>
-    </div>
-  );
+//----------------RETURN------------------//
+/*  return (
+   <div>
+     <input type='text' placeholder='Search hotel...' onChange={handleInputChange} />
+     <button type="submit" onClick={handleSubmit}>Search</button>
+   </div>
+ );
 } */
 
 export default function Search() {
   const dispatch = useDispatch()
   const [name, setName] = useState("");
 
-  function handleInputChange(e){
-      e.preventDefault()
-      setName(e.target.value)
+  function handleInputChange(e) {
+    e.preventDefault()
+    setName(e.target.value)
   }
-   function handleSubmit(e){
-      e.preventDefault();
-      dispatch(hotelByName(name));
-      
-   }
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(hotelByName(name));
+
+  }
   return (
-      <div className='input-div'> 
-          <input
-              className='input-search'
-              type='search'
-              placeholder='   Search hotel ...'
-              onChange={ handleInputChange }
-              value={name}
-          />
-          <button className='button-search' type='search' onClick={handleSubmit}><strong>Search</strong></button>
+    <div class="input-group ps-5" id="navbarSupportedContent">
+      <div id="navbar-search-autocomplete" class="form-outline">
+        <input type="search" class="form-control " placeholder='Search hotel ...' onChange={ handleInputChange}value={name}/>
       </div>
+      <button type='search' onClick={handleSubmit} class="btn btn-outline-primary">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
   )
 }
-
-
- 
