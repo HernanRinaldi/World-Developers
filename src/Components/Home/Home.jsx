@@ -6,7 +6,6 @@ import Search from '../Search/Search';
 const Home = () => {
   return (
     <div>
-        <Search/>
         <CardHotels/>
     </div>
   )
