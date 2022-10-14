@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { hotelById } from '../../redux/action/action.js';
+import { getDetailHotel, hotelById } from '../../redux/action/action.js';
 import Loader from '../Loader/Loader.jsx';
 import ServicesHotel from '../ServicesHotel/ServicesHotel.jsx'
 import CardRoom from '../CardRoom/CardRoom.jsx';
@@ -11,7 +11,7 @@ const HotelDetail = () => {
   const {id} =useParams();
 
   useEffect(()=>{
-    dispatch(hotelById(id));
+    dispatch(getDetailHotel(id));
   }, [dispatch, id])
 
   const hotelDetail=useSelector((state)=>state.reducerHotel.detailHotel)
@@ -25,7 +25,7 @@ const HotelDetail = () => {
             <Link to='/home'><button>Home</button></Link>
           </div> */}
 
-          <img src={hotelDetail.image} />
+          <img src={hotelDetail.image} alt={hotelDetail.name} />
 
           <div>
             <h2>{hotelDetail.name}</h2>
@@ -50,7 +50,7 @@ const HotelDetail = () => {
             <ServicesHotel/>
           </div>
 
-        </div> : <Loader/>
+        </div> : <h3>Loading detail</h3>
       }
     </div>
   )

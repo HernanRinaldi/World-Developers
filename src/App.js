@@ -6,7 +6,7 @@ import Home from "./Components/Home/Home.jsx";
 import Create from "./Components/Create/Create";
 import Loging from "../src/Components/Loging/Loging";
 import Nav from "./Components/Nav/Nav"
-// import HotelDetail from './Components/HotelDetail/HotelDetail.jsx'
+import HotelDetail from './Components/HotelDetail/HotelDetail.jsx'
 // import RoomDetail from "./Components/RoomDetail/RoomDetail";
 
 function App() {
@@ -18,8 +18,8 @@ function App() {
         <Route exact path="/home/loging" component={ Loging }></Route>
         <Route exact path="/" component={LandingPage}></Route>
         <Route path="/home" component={Home} />
-        {/* <Route path='/hotel/:id' component={HotelDetail} />
-        <Route path='/hotel/room/:id' component={RoomDetail}/> */}
+        <Route path='/hotel/:id' component={HotelDetail} />
+        {/* <Route path='/hotel/room/:id' component={RoomDetail}/> */}
       </Switch>
     </div>
   );
