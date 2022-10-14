@@ -9,7 +9,7 @@ import "./Styles.css";
 //----------------------------//
 export default function Nav() {
   return (
-    <nav class="navbar navbar-expand-sm bg-light fixed-top ">
+    <nav class="navbar navbar-expand-sm bg-light fixed-top">
       <div class="container-fluid container-nav">
         <a class="navbar-brand " href="#">
           <img src={logo} alt="" width="200"/>
