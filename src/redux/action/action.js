@@ -31,7 +31,7 @@ export function getRooms() {
     let rooms = await axios.get('http://localhost:3001/rooms')
     dispatch({
       type: GET_ALL_ROOMS,
-      payload: dataBase
+      payload: rooms.data
     })
   }
 }
@@ -40,7 +40,7 @@ export function hotelByName(name) {
   return async function (dispatch) {
     try {
       if (name) {
-        let hotelName = await axios.get (`http://localhost:3001/hotel?name=${name}`)
+        let hotelName = await axios.get (`http://localhost:3001/hotels?name=${name}`)
         return dispatch({
           type: SEARCH_NAME,
           payload: hotelName.data
@@ -55,7 +55,7 @@ export function hotelByName(name) {
 export function hotelById(id) {
   return async function (dispatch) {
      try {
-       let hotelDetail = await axios.get(`http://localhost:3001/hotel/${id}`)
+       let hotelDetail = await axios.get(`http://localhost:3001/hotels/${id}`)
        dispatch({
          type: GET_HOTEL_DETAIL,
          payload: hotelDetail.data
@@ -69,7 +69,7 @@ export function hotelById(id) {
 export function roomById(id) {
    return async function (dispatch) {
      try {
-       let roomDetail = await axios.get(`http://localhost:3001/room/${id}`)
+       let roomDetail = await axios.get(`http://localhost:3001/rooms/${id}`)
        dispatch({
          type: GET_ROOMS_DETAIL,
          payload: roomDetail.data
