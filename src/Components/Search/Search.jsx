@@ -37,6 +37,7 @@ export default function Search() {
   function handleInputChange(e) {
     e.preventDefault()
     setName(e.target.value)
+    dispatch(hotelByName(name));
   }
   function handleSubmit(e) {
     e.preventDefault();
