@@ -82,9 +82,9 @@ export function getDetailHotel(id){
   }
 }
 
-export function getHotels(page) {
+export function getHotels() {
   return async function (dispatch) {
-    let hotels = await axios.get(`${BACK_URL}/hotels?page=` + page)
+    let hotels = await axios.get(`${BACK_URL}/hotels`)
     dispatch({
       type: GET_ALL_HOTELS,
       payload: hotels.data
@@ -92,11 +92,11 @@ export function getHotels(page) {
   }
 }
 
-export function hotelByName(name, page) {
+export function hotelByName(name) {
   return async function (dispatch) {
     try {
       if (name) {
-        let hotelName = await axios.get (`${BACK_URL}/hotels?name=${name}&page=${page}`)
+        let hotelName = await axios.get (`${BACK_URL}/hotels?name=${name}`)
         return dispatch({
           type: SEARCH_NAME_HOTEL,
           payload: hotelName.data

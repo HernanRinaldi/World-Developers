@@ -7,29 +7,27 @@ import Filter from '../Filter/Filter';
 import Search from '../Search/Search';
 import Footer from '../Footer/Footer'
 import Nav from "../Nav/Nav"
-import Paginado from '../Paginado/Paginado';
+// import Paginado from '../Paginado/Paginado';
 
   
 
 const Home = () => {
 
-  const dispatch=useDispatch();
+  // const dispatch=useDispatch();
 
-  const [pages, setPages]=useState(0);
+  // const [pages, setPages]=useState(0);
 
-  useEffect(()=>{
-    dispatch(getHotels(pages))
-  },[dispatch, pages])
+  // useEffect(()=>{
+  //   dispatch(getHotels(pages))
+  // },[dispatch, pages])
 
   return (
     <div>
-      {/* <Filter/> */}
       <CardHotels/>
-        <Paginado 
+        {/* <Paginado 
           pages={pages}
           setPages={setPages}
-        />
-      <Footer />
+        />    */}
     </div>
   )
 }

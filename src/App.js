@@ -7,6 +7,7 @@ import Create from "./Components/Create/Create";
 import Loging from "../src/Components/Loging/Loging";
 import Nav from "./Components/Nav/Nav"
 import HotelDetail from './Components/HotelDetail/HotelDetail.jsx'
+import Footer from './Components/Footer/Footer'
 // import RoomDetail from "./Components/RoomDetail/RoomDetail";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/hotel/:id' component={HotelDetail} />
         {/* <Route path='/hotel/room/:id' component={RoomDetail}/> */}
       </Switch>
+      <Footer />
     </div>
   );
 }

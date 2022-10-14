@@ -8,7 +8,7 @@ function Filter() {
   const rooms = useSelector(state => state.reducerRoom.rooms)
   const servicesHotel = useSelector(state => state.reducerHotel.servicesHotel)
   const location = useSelector(state => state.reducerHotel.location)
-  const [filterWindowVisibility, setFilterWindowVisibility] = useState(true)
+  const [filterWindowVisibility, setFilterWindowVisibility] = useState(false)
   
   const handleFilterClick = () => setFilterWindowVisibility(filterWindowVisibility ? false : true)
 
@@ -20,17 +20,19 @@ function Filter() {
 
   /* ================ */
   const [selectedInput, setSelectedInput] = useState([])
+  const [estadolocal, setEstadolocal] = useState("")
   
   const handleFilterByRoom = (e) => {
     setSelectedInput({...selectedInput, [e.target.value]: e.target.checked})
   }
 
   const handleFilterByCity = (e) => {
-    dispatch(filterByCity(e.target.value))
+    setEstadolocal(e.target.value)
   }
 
   const handleApply = (e) => {
     handleFilterClick()
+    dispatch(filterByCity(estadolocal))
   }
 
   return (
@@ -54,7 +56,7 @@ function Filter() {
           <button onClick={handleFilterClick} type="button" className="btn align-self-end">x</button>
           <p>Filter by...</p>
 
-          <p>Type of room</p>
+          {/* <p>Type of room</p>
           {rooms?.map(r => (
             <div key={r.id} className="form-check">
               <input onChange={handleFilterByRoom} className="form-check-input" type="checkbox" value={r.name} />
@@ -86,7 +88,7 @@ function Filter() {
             <label className="form-check-label">
               $100 - $200
             </label>
-          </div>
+          </div> */}
 
           <p>City</p>
           <select onChange={handleFilterByCity} defaultValue='DEFAULT' className="form-select">
