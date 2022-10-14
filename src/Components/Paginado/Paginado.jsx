@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import "./Paginado.css";
 
 function Paginado({pages, setPages}){
   const  hotels  = useSelector( state => state.reducerHotel.hotels )
@@ -37,18 +38,18 @@ function Paginado({pages, setPages}){
   }
 
   return(
-    <div>
-      <button onClick={prev} disabled={pages<=0}>{'<<'}</button>
+    <div className='pagination'>
+      <button className='page-item1' onClick={prev} disabled={pages<=0}>{'<<'}</button>
 
         {
           pageNumber?.map(num=>(
-            <button key={num} onClick={paginadoNumber}>
+            <button  className='page-item' key={num} onClick={paginadoNumber}>
               <a>{num+1}</a>
             </button>
           ))
         }
 
-      <button onClick={next} disabled={pages>=allPage}>{'>>'}</button>
+      <button  className='page-item1' onClick={next} disabled={pages>=allPage}>{'>>'}</button>
     </div>
   )
 }
