@@ -102,7 +102,7 @@ function handleChange(e){
 //------------------ HANDLE CHANGE ROOMS-------------------//
 function handleChangeRooms(e){
   e.preventDefault();
-  input_rooms({
+  input_setrooms({
     ...input_rooms,
     [e.target.name]: e.target.value
   })
@@ -142,8 +142,8 @@ function handleSubmit(e) {
 function handleSubmitRooms(e) {
   e.preventDefault()
   
-  if (Object.keys(errors).length === 0 && input_rooms.category.length > 0) {
-    // dispatch(createRooms(input_hotels))
+  if (Object.keys(errors).length === 0 ) {
+    dispatch(createRooms(input_rooms))
 
     input_sethotels({
       name:"",
@@ -296,8 +296,9 @@ return (
   <form onSubmit={(e) => handleSubmitRooms(e)} >
       <h1>Rooms:</h1>
       {/*-------------------SELECT HOTELS---------------- */}
-      <select>
+      <select onChange={(e) => handleChangeRooms(e)} >
         <option>Hotels:</option>
+        <option>Miami beach</option>
       </select>
 
       {/*-----------------------NAME------------------------ */} 
@@ -327,7 +328,7 @@ return (
       value={input_rooms.price} 
       name="price" 
       onChange={(e) => handleChangeRooms(e)} />
-      {<p className="" > Value: U${input_hotels.price}</p>}
+      {<p className="" > Value: U${input_rooms.price}</p>}
 
       {/*--------------------------DESCRIPTION----------------------- */}  
       <textarea
@@ -340,8 +341,11 @@ return (
       onChange={(e) => handleChangeRooms(e)} />
       {errors.description && <p className="">{errors.description}</p>}
       {/*--------------------------DESCRIPTION----------------------- */}
-      <select>
+      <select onChange={(e) => handleChangeRooms(e)} >
         <option>Category:</option>
+        <option>suite presidential</option>
+        <option></option>
+        <option></option>
       </select>
 
     {/*----------------------------BUTTON------------------------ */}
