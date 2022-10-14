@@ -6,7 +6,8 @@ import {
   CREATE_HOTELS,
   CREATE_ROOMS,
   GET_ALL_LOCATIONS,
-  FILTER_BY_CITY
+  FILTER_BY_CITY,
+  CLEAR_DETAIL
 } from '../action/action';
 
 const initialStateHotel = {
@@ -35,6 +36,13 @@ const hotels_reducer = (state = initialStateHotel, action) => {
         ...state,
         detailHotel: action.payload
       }
+
+    case CLEAR_DETAIL:
+      return {
+        ...state,
+        detailHotel: {}
+      }
+
     case GET_ALL_SERVICES_HOTEL:
       return {
         ...state,

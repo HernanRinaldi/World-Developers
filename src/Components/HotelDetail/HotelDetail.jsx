@@ -1,59 +1,59 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
-import { getDetailHotel, hotelById } from '../../redux/action/action.js';
-import Loader from '../Loader/Loader.jsx';
-import ServicesHotel from '../ServicesHotel/ServicesHotel.jsx'
-import CardRoom from '../CardRoom/CardRoom.jsx';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { clearDetail, getDetailHotel } from "../../redux/action/action.js";
+// import ServicesHotel from "../ServicesHotel/ServicesHotel.jsx";
+// import CardRoom from "../CardRoom/CardRoom.jsx";
+import Footer from "../Footer/Footer.jsx";
+// import Nav from "../Nav/Nav.jsx";
+import './HotelDetail.css'
 
 const HotelDetail = () => {
-  const dispatch=useDispatch();
-  const {id} =useParams();
+  const dispatch = useDispatch();
+  const { id } = useParams();
 
-  useEffect(()=>{
+  //component did mount/update
+  useEffect(() => {
     dispatch(getDetailHotel(id));
-  }, [dispatch, id])
+  }, [dispatch, id]);
 
-  const hotelDetail=useSelector((state)=>state.reducerHotel.detailHotel)
+  //component will unmount
+  useEffect(() => {
+    return () => dispatch(clearDetail())
+  }, [dispatch])
 
+  const hotelDetail = useSelector((state) => state.reducerHotel.detailHotel);
+  const { name, image, qualification, description, Locations } = hotelDetail
   return (
-    <div>
-      {
-        hotelDetail.name ?
+    <div className="hotelDetail-container">
+      {/* <Nav /> */}
+      {hotelDetail.name ? (
         <div>
-          {/* <div>
-            <Link to='/home'><button>Home</button></Link>
-          </div> */}
-
-          <img src={hotelDetail.image} alt={hotelDetail.name} />
-
-          <div>
-            <h2>{hotelDetail.name}</h2>
+          <img className="hotelDetail-img" src={image} alt={name} />
+          <div className="hotelDetail-body">
+            <h1 className="hotelDetail-title">{name}</h1>
+            <p>{Locations[0].city}, {Locations[0].country}</p>
+            <p>Score: {qualification}</p>
+            <p>{description}</p>
           </div>
-
+          {/* <h2>Available rooms</h2>
           <div>
-            <p>{hotelDetail.location.country}</p>
-            <p>{hotelDetail.location.continent}</p>
+            <label>Check-in&nbsp;</label>
+            <input type={"date"} />
           </div>
+          <label>Check-out&nbsp;</label>
+          <input type={"date"} /> */}
+          {/* <CardRoom id={}, name={}, image={}, price={}, description={} /> */}
 
-          <div>
-            <p>{hotelDetail.description}</p>
-          </div>
-
-          <div>
-            <h2>Available rooms</h2>
-            <CardRoom/>
-          </div>
-
-          <div>
-            <h2>What this place offers</h2>
-            <ServicesHotel/>
-          </div>
-
-        </div> : <h3>Loading detail</h3>
-      }
+          {/* <h2>What this place offers</h2> */}
+          {/* <ServicesHotel /> */}
+        </div>
+      ) : (
+        <h3>Loading detail</h3>
+      )}
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default HotelDetail;
