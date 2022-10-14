@@ -2,10 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-
-
-
-
+import { createHotels, createRooms } from "../../redux/action/action";
 //----------------------------FUNCTION CREATE----------------//
 export default function Create() {
 
@@ -17,7 +14,8 @@ export default function Create() {
 
 //-------------------------USEEFFECT------------------------------//
 // useEffect(() => {
-//   dispatch()
+//   dispatch(createHotels())
+//   dispatch(createRooms())
 // }, [dispatch])
 
 //------------------------STATE LOCAL FORM------------------------//
@@ -108,12 +106,12 @@ function handleChangeRooms(e){
     ...input_rooms,
     [e.target.name]: e.target.value
   })
-  setErrors(
-    validate({
-      ...input_hotels,
-      [e.target.name]: e.target.value,
-    })
-  )
+  // setErrors(
+  //   validate({
+  //     ...input_hotels,
+  //     [e.target.name]: e.target.value,
+  //   })
+  // )
 }
 
 //---------------- HANDLE SUBMIT HOTELS------------------//
@@ -122,7 +120,7 @@ function handleSubmit(e) {
   e.preventDefault()
   
   if (Object.keys(errors).length === 0 && input_hotels.country.length > 0) {
-    // dispatch(createHotels(input_hotels))
+    dispatch(createHotels(input_hotels))
 
     input_sethotels({
       name:"",
@@ -328,7 +326,7 @@ return (
       type="range" min="0" max="1000" 
       value={input_rooms.price} 
       name="price" 
-      onChange={(e) => handleChange(e)} />
+      onChange={(e) => handleChangeRooms(e)} />
       {<p className="" > Value: U${input_hotels.price}</p>}
 
       {/*--------------------------DESCRIPTION----------------------- */}  
@@ -339,13 +337,24 @@ return (
       value={input_rooms.description} 
       name="description" 
       maxLength="1000" 
-      onChange={(e) => handleChange(e)}>
-      </textarea>
+      onChange={(e) => handleChangeRooms(e)} />
       {errors.description && <p className="">{errors.description}</p>}
       {/*--------------------------DESCRIPTION----------------------- */}
       <select>
         <option>Category:</option>
       </select>
+
+    {/*----------------------------BUTTON------------------------ */}
+    <div>
+      <button className='' 
+      type="submit" 
+      onClick={(e) => handleSubmit(e)}>Create</button>
+    </div>
+    <div>
+      <Link to = "/home" >
+      <button  >Go Home</button>
+      </Link>
+    </div>  
 
   </form>
   </div>
