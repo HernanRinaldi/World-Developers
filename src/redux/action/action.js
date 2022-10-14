@@ -20,11 +20,18 @@ export const CREATE_HOTELS = "CREATE_HOTELS";
 export const CREATE_ROOMS = "CREATE_ROOMS";
 export const URL_POST_HOTEL = "URL_POST_HOTEL";
 export const URL_POST_ROOM = "URL_POST_ROOM";
+export const CLEAR_DETAIL = "CLEAR_DETAIL";
 
 
 
 const BACK_URL = "http://localhost:3001"
 //----------------------- HOTELS ------------------------------//
+
+export function clearDetail () {
+  return {
+    type: CLEAR_DETAIL
+  }
+}
 
 export function filterByCity (value) {
   return async function (dispatch) {
