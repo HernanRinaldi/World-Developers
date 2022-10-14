@@ -7,7 +7,7 @@ import {
   CREATE_ROOMS,
   GET_ALL_LOCATIONS,
   FILTER_BY_CITY,
-  ORDER_BY
+  ORDER_BY,
   CLEAR_DETAIL
   
 } from '../action/action';
