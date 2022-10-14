@@ -27,12 +27,7 @@ export function getRooms() {
   return async function (dispatch) {
     let rooms = await axios.get(`${BACK_URL}/rooms`)
     dispatch({
-      type: GET_ALL_ROOMS,
-<<<<<<<<< Temporary merge branch 1
-      payload: dataBase[0].rooms
-=========
       payload: rooms.data
->>>>>>>>> Temporary merge branch 2
     })
   }
 }
@@ -80,3 +75,4 @@ export function roomById(id) {
        console.log(error)
      }
    }
+  }
