@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { roomById } from '../../redux/action/action.js';
-import Loading from '../Loading/Loading.jsx';
+import Loader from '../Loader/Loader.jsx';
 
 
 const RoomDetail = () => {
@@ -13,7 +13,7 @@ const RoomDetail = () => {
     dispatch(roomById(id))
   }, [dispatch, id])
 
-  const roomDetail = useSelector((state) => state.reducerRoom.detailRoom) //ver si es detail
+  const roomDetail = useSelector((state) => state.reducerRoom.detailRoom)
 
   return (
     <div>
@@ -43,13 +43,14 @@ const RoomDetail = () => {
               <p>The price is {roomDetail.price}</p>
             </div> */}
 
+            {/* FALTA SERVICIOS CON ICONOS */}
 
             <div>
               <p>It is what you are looking for? <button>ADD TO CART</button></p>
               {/* falta agregar logica al boton para que lo agregue al carrito */}
             </div>
 
-          </div> : <Loading />
+          </div> : <Loader />
       }
     </div>
   )

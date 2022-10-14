@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { hotelById } from '../../redux/action/action.js';
-// import Loading from '../Loading/Loading.jsx';
-// import ServicesHotel from '../ServicesHotel/ServicesHotel.jsx'
+import Loader from '../Loader/Loader.jsx';
+import ServicesHotel from '../ServicesHotel/ServicesHotel.jsx'
 import CardRoom from '../CardRoom/CardRoom.jsx';
 
 const HotelDetail = () => {
@@ -32,7 +32,8 @@ const HotelDetail = () => {
           </div>
 
           <div>
-            <p>{hotelDetail.location}</p>
+            <p>{hotelDetail.location.country}</p>
+            <p>{hotelDetail.location.continent}</p>
           </div>
 
           <div>
@@ -46,11 +47,10 @@ const HotelDetail = () => {
 
           <div>
             <h2>What this place offers</h2>
-            {/* <ServicesHotel/> */}
+            <ServicesHotel/>
           </div>
 
-        </div> : <p>Loading...</p>
-        // <Loading/>
+        </div> : <Loader/>
       }
     </div>
   )

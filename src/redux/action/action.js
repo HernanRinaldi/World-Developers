@@ -1,8 +1,5 @@
-
 import axios from 'axios';
 import { dataBase } from '../../dataBase/dataBase';
-
-
 
 export const GET_ALL_HOTELS = "GET_ALL_HOTELS";
 export const GET_ALL_ROOMS = "GET_ALL_ROOMS";
@@ -30,11 +27,11 @@ export function getRooms() {
   return async function (dispatch) {
     let rooms = await axios.get(`${BACK_URL}/rooms`)
     dispatch({
-      type: GET_ALL_ROOMS,
       payload: rooms.data
     })
   }
 }
+
 
 export function hotelByName(name) {
   return async function (dispatch) {
@@ -78,4 +75,3 @@ export function roomById(id) {
        console.log(error)
      }
    }
-}
