@@ -1,5 +1,13 @@
-/*   ESTILOS PARA EL NAVEGADOR   */
+.navbar {
+  padding: 0;
+}
 
 .container-nav{
   background-color: var(--clr-very-light-main) !important;
 } 
+
+.navbar-logo {
+  height: 45px;
+  margin: 16px;
+  object-fit: cover;
+}
