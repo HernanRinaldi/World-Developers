@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./CardRoom.css";
 
 const CardRoom = ({ id, name, image, price, description }) => {
   return (
+    <Link to={`/hotel/room/${id}`} >
     <div className="card">
       <div className="row g-0">
         <div className="col-sm-4">
@@ -22,6 +24,7 @@ const CardRoom = ({ id, name, image, price, description }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
